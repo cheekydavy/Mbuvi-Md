@@ -1,19 +1,19 @@
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
+/* MBUVI-MD */
 const fs = require('fs')
 const { tmpdir } = require("os")
 const Crypto = require("crypto")
 const ff = require('fluent-ffmpeg')
 const webp = require("node-webpmux")
 const path = require("path")
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
 async function imageToWebp (media) {
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
     const tmpFileOut = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
     const tmpFileIn = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.jpg`)
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
     fs.writeFileSync(tmpFileIn, media)
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
     await new Promise((resolve, reject) => {
         ff(tmpFileIn)
             .on("error", reject)
@@ -27,20 +27,20 @@ async function imageToWebp (media) {
             .toFormat("webp")
             .save(tmpFileOut)
     })
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
     const buff = fs.readFileSync(tmpFileOut)
     fs.unlinkSync(tmpFileOut)
     fs.unlinkSync(tmpFileIn)
     return buff
 }
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
 async function videoToWebp (media) {
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
     const tmpFileOut = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
     const tmpFileIn = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.mp4`)
-          /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+          /* MBUVI-MD */
     fs.writeFileSync(tmpFileIn, media)
-                                 /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+                                 /* MBUVI-MD */
     await new Promise((resolve, reject) => {
         ff(tmpFileIn)
             .on("error", reject)
@@ -65,19 +65,19 @@ async function videoToWebp (media) {
             .toFormat("webp")
             .save(tmpFileOut)
     })
-           /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+           /* MBUVI-MD */
     const buff = fs.readFileSync(tmpFileOut)
     fs.unlinkSync(tmpFileOut)
     fs.unlinkSync(tmpFileIn)
     return buff
 }
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
 async function writeExifImg (media, metadata) {
     let wMedia = await imageToWebp(media)
     const tmpFileIn = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
     const tmpFileOut = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
     fs.writeFileSync(tmpFileIn, wMedia)
-                            /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+                            /* MBUVI-MD */
     if (metadata.packname || metadata.author) {
         const img = new webp.Image()
         const json = { "sticker-pack-id": `https://github.com/DikaArdnt/Hisoka-Morou`, "sticker-pack-name": metadata.packname, "sticker-pack-publisher": metadata.author, "emojis": metadata.categories ? metadata.categories : [""] }
@@ -92,13 +92,13 @@ async function writeExifImg (media, metadata) {
         return tmpFileOut
     }
 }
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
 async function writeExifVid (media, metadata) {
     let wMedia = await videoToWebp(media)
     const tmpFileIn = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
     const tmpFileOut = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
     fs.writeFileSync(tmpFileIn, wMedia)
-             /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+             /* MBUVI-MD */
     if (metadata.packname || metadata.author) {
         const img = new webp.Image()
         const json = { "sticker-pack-id": `https://github.com/DikaArdnt/Hisoka-Morou`, "sticker-pack-name": metadata.packname, "sticker-pack-publisher": metadata.author, "emojis": metadata.categories ? metadata.categories : [""] }
@@ -113,13 +113,13 @@ async function writeExifVid (media, metadata) {
         return tmpFileOut
     }
 }
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
 async function writeExif (media, metadata) {
     let wMedia = /webp/.test(media.mimetype) ? media.data : /image/.test(media.mimetype) ? await imageToWebp(media.data) : /video/.test(media.mimetype) ? await videoToWebp(media.data) : ""
     const tmpFileIn = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
     const tmpFileOut = path.join(tmpdir(), `${Crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
     fs.writeFileSync(tmpFileIn, wMedia)
-     /* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+     /* MBUVI-MD */
     if (metadata.packname || metadata.author) {
         const img = new webp.Image()
         const json = { "sticker-pack-id": `https://github.com/DikaArdnt/Hisoka-Morou`, "sticker-pack-name": metadata.packname, "sticker-pack-publisher": metadata.author, "emojis": metadata.categories ? metadata.categories : [""] }
@@ -134,8 +134,6 @@ async function writeExif (media, metadata) {
         return tmpFileOut
     }
 }
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+/* MBUVI-MD */
 module.exports = { imageToWebp, videoToWebp, writeExifImg, writeExifVid, writeExif }
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
-/* 𝗚𝗜𝗙𝗧𝗘𝗗-𝗠𝗗 𝗩𝟱 */
+
