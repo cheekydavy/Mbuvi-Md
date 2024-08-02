@@ -1,7 +1,7 @@
 {
-  "name": "gifted-md",
+  "name": "mbuvi-md",
   "version": "5.0.0",
-  "description": "Gifted latest multi device whatsapp bot",
+  "description": "Mbuvi latest multi device whatsapp bot",
   "main": "./gifted/gifted.js",
   "type": "module",
   "engines" : { "node": "v20.15.1", "npm": "10.8.2" },
@@ -10,8 +10,8 @@
     "stop": "pm2 stop gifted",
     "restart": "pm2 restart gifted"
   },
-  "keywords": ["gifted-md", "whatsapp-bot", "gifted-tech"],
-  "author": "Gifted Tech",
+  "keywords": ["mbuvi-md", "whatsapp-bot", "mbuvi-tech"],
+  "author": "Mbuvi Tech",
   "license": "GNU",
   "dependencies": {
     "@distube/ytdl-core": "^4.13.5",
@@ -82,7 +82,7 @@
       "url": "git+https://github.com/mouricedevs/Gifted-Md.git"
    },
    "bugs": {
-      "url": "https://github.com/mouricedevs/Gifted-Md/issues"
+      "url": "https://github.com/mouricedevs/Mbuvi-Md/issues"
    },
-   "homepage": "https://github.com/mouricedevs/Gifted-Md#readme"
+   "homepage": "https://github.com/mouricedevs/Mbuvi-Md#readme"
 }
